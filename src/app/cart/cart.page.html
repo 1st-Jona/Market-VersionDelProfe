@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Carrito
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Productos</ion-label>
+        </ion-list-header>
+
+        <ion-item-group *ngIf="cart">
+            <ion-item-divider>
+                <ion-label>En Carrito</ion-label>
+
+            </ion-item-divider>
+
+            <ion-item lines="none" *ngFor="let item of cart.products; index as i">
+                <ion-label>{{ item.name }}</ion-label>
+                <ion-badge color="primary">{{ item.price | currency}}</ion-badge>
+            </ion-item>
+
+            <ion-item-divider>
+                <ion-label>Resumen</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label>Subtotal</ion-label>
+                <ion-badge color="primary">{{ cart.subtotal | currency}}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>IVA</ion-label>
+                <ion-badge color="primary">{{ cart.iva | currency}}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Total</ion-label>
+                <ion-badge color="primary">{{ cart.total | currency}}</ion-badge>
+            </ion-item>
+
+        </ion-item-group>
+
+    </ion-list>
+</ion-content>
